@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doceria - Doce Encanto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="container">
+            <span><i class="fas fa-clock"></i> Segunda a Sexta: 10h às 18h</span>
+            <span><i class="fas fa-phone"></i> (35) 3421-5678 | <i class="fab fa-whatsapp"></i> (35) 99876-5432</span>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container header-content">
+            <a href="../index.html" class="logo">Doce <span>Encanto</span></a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="../index.html">INÍCIO</a>
+                <a href="doceria.html" class="active">DOCERIA</a>
+                <a href="kit-festa.html">KIT FESTA</a>
+                <a href="sobre.html">SOBRE</a>
+                <a href="contato.html">CONTATO</a>
+            </nav>
+            <div class="header-actions">
+                <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i></button>
+                <a href="login.html" class="account-btn"><i class="fas fa-user"></i><span>Entrar</span></a>
+                <a href="carrinho.html" class="cart-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Nossa Doceria</h1>
+            <p>Doces artesanais feitos com amor e ingredientes selecionados</p>
+            <div class="breadcrumb">
+                <a href="../index.html">Início</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Doceria</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FILTERS -->
+    <section class="filters-section">
+        <div class="container">
+            <div class="filters-bar">
+                <div class="filter-group">
+                    <label>Categoria:</label>
+                    <select id="categoryFilter">
+                        <option value="">Todas</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Ordenar por:</label>
+                    <select id="sortFilter">
+                        <option value="name">Nome</option>
+                        <option value="price-asc">Menor Preço</option>
+                        <option value="price-desc">Maior Preço</option>
+                    </select>
+                </div>
+                <div class="search-box">
+                    <input type="text" id="searchProducts" placeholder="Buscar produtos...">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS GRID -->
+    <section class="products-section">
+        <div class="container">
+            <div class="products-count">
+                <span id="productsCount">Carregando produtos...</span>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+                <!-- Products loaded dynamically -->
+                <div class="product-card skeleton"></div>
+                <div class="product-card skeleton"></div>
+                <div class="product-card skeleton"></div>
+                <div class="product-card skeleton"></div>
+                <div class="product-card skeleton"></div>
+                <div class="product-card skeleton"></div>
+            </div>
+
+            <div class="no-products" id="noProducts" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>Nenhum produto encontrado</h3>
+                <p>Tente buscar por outro termo ou categoria</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <h3 class="logo">Doce <span>Encanto</span></h3>
+                    <p>Doces artesanais feitos com amor e ingredientes selecionados.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="doceria.html">Doceria</a></li>
+                        <li><a href="kit-festa.html">Kit Festa</a></li>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i><span>(35) 3421-5678</span></li>
+                        <li><i class="fab fa-whatsapp"></i><span>(35) 99876-5432</span></li>
+                        <li><i class="fas fa-envelope"></i><span>contato@doceencanto.com.br</span></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Localização</h4>
+                    <address>
+                        <i class="fas fa-map-marker-alt"></i>
+                        Rua Verbo Divino, 1083<br>
+                        Chácara Santo Antônio - SP
+                    </address>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Delicious Doceria - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/5535998765432" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadCategoriesFilter();
+            await loadAllProducts();
+            setupFilters();
+        });
+
+        let allProducts = [];
+        let allCategories = [];
+
+        async function loadCategoriesFilter() {
+            try {
+                allCategories = await API.Categorias.listar();
+                const select = document.getElementById('categoryFilter');
+                allCategories.forEach(cat => {
+                    const option = document.createElement('option');
+                    option.value = cat.id;
+                    option.textContent = cat.nome;
+                    select.appendChild(option);
+                });
+
+                // Check URL for category filter
+                const urlParams = new URLSearchParams(window.location.search);
+                const catId = urlParams.get('categoria');
+                if (catId) {
+                    select.value = catId;
+                }
+            } catch (error) {
+                console.error('Erro ao carregar categorias:', error);
+            }
+        }
+
+        async function loadAllProducts() {
+            const grid = document.getElementById('productsGrid');
+            try {
+                allProducts = await API.Produtos.listar();
+                renderProducts(allProducts);
+            } catch (error) {
+                console.error('Erro ao carregar produtos:', error);
+                grid.innerHTML = '<p>Erro ao carregar produtos</p>';
+            }
+        }
+
+        function renderProducts(products) {
+            const grid = document.getElementById('productsGrid');
+            const noProducts = document.getElementById('noProducts');
+            const countEl = document.getElementById('productsCount');
+
+            if (products.length === 0) {
+                grid.style.display = 'none';
+                noProducts.style.display = 'flex';
+                countEl.textContent = 'Nenhum produto encontrado';
+                return;
+            }
+
+            grid.style.display = 'grid';
+            noProducts.style.display = 'none';
+            countEl.textContent = `${products.length} produto(s) encontrado(s)`;
+
+            grid.innerHTML = products.map((prod, i) => {
+                const categoryName = getCategoryName(prod.categoria_id);
+                const icon = getProductIcon(prod, categoryName);
+                return `
+                <div class="product-card">
+                    <div class="image-wrapper">
+                        <i class="fas ${icon}"></i>
+                    </div>
+                    <div class="content">
+                        <span class="category-tag">${categoryName}</span>
+                        <h3>${prod.nome}</h3>
+                        <p class="description">${prod.descricao || 'Produto artesanal'}</p>
+                        <p class="price">R$ ${prod.preco.toFixed(2).replace('.', ',')}</p>
+                        <div class="actions">
+                            <button class="btn-add" onclick='addToCart(${JSON.stringify(prod).replace(/'/g, "\\'")})'>
+                                <i class="fas fa-plus"></i> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            }).join('');
+        }
+
+        function getCategoryName(id) {
+            const cat = allCategories.find(c => c.id === id);
+            return cat ? cat.nome : 'Geral';
+        }
+
+        function setupFilters() {
+            const categoryFilter = document.getElementById('categoryFilter');
+            const sortFilter = document.getElementById('sortFilter');
+            const searchInput = document.getElementById('searchProducts');
+
+            categoryFilter.addEventListener('change', applyFilters);
+            sortFilter.addEventListener('change', applyFilters);
+            searchInput.addEventListener('input', applyFilters);
+
+            // Apply initial filter from URL
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const categoryId = document.getElementById('categoryFilter').value;
+            const sortBy = document.getElementById('sortFilter').value;
+            const searchTerm = document.getElementById('searchProducts').value.toLowerCase();
+
+            let filtered = [...allProducts];
+
+            // Filter by category
+            if (categoryId) {
+                filtered = filtered.filter(p => p.categoria_id == categoryId);
+            }
+
+            // Filter by search
+            if (searchTerm) {
+                filtered = filtered.filter(p => 
+                    p.nome.toLowerCase().includes(searchTerm) ||
+                    (p.descricao && p.descricao.toLowerCase().includes(searchTerm))
+                );
+            }
+
+            // Sort
+            switch (sortBy) {
+                case 'name':
+                    filtered.sort((a, b) => a.nome.localeCompare(b.nome));
+                    break;
+                case 'price-asc':
+                    filtered.sort((a, b) => a.preco - b.preco);
+                    break;
+                case 'price-desc':
+                    filtered.sort((a, b) => b.preco - a.preco);
+                    break;
+            }
+
+            renderProducts(filtered);
+        }
+    </script>
+</body>
+</html>
+

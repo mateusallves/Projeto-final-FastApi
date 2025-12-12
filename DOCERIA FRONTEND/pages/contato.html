@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Doce Encanto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="container">
+            <span><i class="fas fa-clock"></i> Segunda a Sexta: 10h às 18h</span>
+            <span><i class="fas fa-phone"></i> (35) 3421-5678 | <i class="fab fa-whatsapp"></i> (35) 99876-5432</span>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container header-content">
+            <a href="../index.html" class="logo">Doce <span>Encanto</span></a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="../index.html">INÍCIO</a>
+                <a href="doceria.html">DOCERIA</a>
+                <a href="kit-festa.html">KIT FESTA</a>
+                <a href="sobre.html">SOBRE</a>
+                <a href="contato.html" class="active">CONTATO</a>
+            </nav>
+            <div class="header-actions">
+                <a href="login.html" class="account-btn"><i class="fas fa-user"></i><span>Entrar</span></a>
+                <a href="carrinho.html" class="cart-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header contact-header">
+        <div class="container">
+            <h1><i class="fas fa-envelope"></i> Fale Conosco</h1>
+            <p>Estamos prontos para atender você</p>
+            <div class="breadcrumb">
+                <a href="../index.html">Início</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Contato</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- CONTACT INFO -->
+                <div class="contact-info">
+                    <h2>Informações de Contato</h2>
+                    <p>Entre em contato conosco através dos canais abaixo ou preencha o formulário.</p>
+
+                    <div class="info-cards">
+                        <div class="info-card">
+                            <div class="icon"><i class="fas fa-phone-alt"></i></div>
+                            <div class="details">
+                                <h4>Telefone</h4>
+                                <p>(35) 3421-5678</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="icon"><i class="fab fa-whatsapp"></i></div>
+                            <div class="details">
+                                <h4>WhatsApp</h4>
+                                <p>(35) 99876-5432</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="icon"><i class="fas fa-envelope"></i></div>
+                            <div class="details">
+                                <h4>E-mail</h4>
+                                <p>contato@doceencanto.com.br</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="details">
+                                <h4>Endereço</h4>
+                                <p>Rua Verbo Divino, 1083<br>Chácara Santo Antônio - SP</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="icon"><i class="fas fa-clock"></i></div>
+                            <div class="details">
+                                <h4>Horário</h4>
+                                <p>Segunda a Sexta: 10h às 18h</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-contact">
+                        <h4>Redes Sociais</h4>
+                        <div class="social-links">
+                            <a href="#" class="social-link instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-link facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://wa.me/5535998765432" class="social-link whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONTACT FORM -->
+                <div class="contact-form-wrapper">
+                    <h2>Envie sua mensagem</h2>
+                    <form id="contactForm" onsubmit="handleContact(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nome">Nome completo *</label>
+                                <input type="text" id="nome" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-mail *</label>
+                                <input type="email" id="email" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="telefone">Telefone</label>
+                                <input type="tel" id="telefone" placeholder="(11) 99999-9999">
+                            </div>
+                            <div class="form-group">
+                                <label for="tipoEvento">Tipo de evento</label>
+                                <select id="tipoEvento">
+                                    <option value="">Selecione...</option>
+                                    <option value="aniversario">Aniversário</option>
+                                    <option value="casamento">Casamento</option>
+                                    <option value="corporativo">Evento Corporativo</option>
+                                    <option value="cha">Chá de Bebê/Revelação</option>
+                                    <option value="outro">Outro</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="data">Data do evento</label>
+                                <input type="date" id="data">
+                            </div>
+                            <div class="form-group">
+                                <label for="pessoas">Número de pessoas</label>
+                                <input type="number" id="pessoas" min="1" placeholder="Ex: 50">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="local">Local do evento</label>
+                            <input type="text" id="local" placeholder="Cidade/Bairro">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="observacao">Mensagem / Observações *</label>
+                            <textarea id="observacao" rows="5" required placeholder="Descreva o que você precisa..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-paper-plane"></i> Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAP SECTION -->
+    <section class="map-section">
+        <div class="container">
+            <h2>Nossa Localização</h2>
+            <div class="map-wrapper">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3655.8876!2d-46.6976!3d-23.6234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDM3JzI0LjMiUyA0NsKwNDEnNTEuNCJX!5e0!3m2!1spt-BR!2sbr!4v1234567890" 
+                    width="100%" 
+                    height="400" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <h3 class="logo">Doce <span>Encanto</span></h3>
+                    <p>Doces artesanais feitos com amor.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i><span>(35) 3421-5678</span></li>
+                        <li><i class="fab fa-whatsapp"></i><span>(35) 99876-5432</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Delicious Doceria</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5535998765432" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        async function handleContact(e) {
+            e.preventDefault();
+
+            const formData = {
+                nome: document.getElementById('nome').value,
+                email: document.getElementById('email').value,
+                telefone: document.getElementById('telefone').value || null,
+                numero_pessoas: parseInt(document.getElementById('pessoas').value) || null,
+                tipo_evento: document.getElementById('tipoEvento').value || null,
+                data: document.getElementById('data').value || null,
+                local: document.getElementById('local').value || null,
+                observacao: document.getElementById('observacao').value
+            };
+
+            try {
+                await API.Contato.enviar(formData);
+                
+                document.getElementById('contactForm').reset();
+                
+                // Show success message
+                const wrapper = document.querySelector('.contact-form-wrapper');
+                wrapper.innerHTML = `
+                    <div class="success-message">
+                        <i class="fas fa-check-circle"></i>
+                        <h2>Mensagem enviada!</h2>
+                        <p>Obrigado pelo contato. Responderemos em breve.</p>
+                        <button onclick="location.reload()" class="btn-secondary">
+                            Enviar nova mensagem
+                        </button>
+                    </div>
+                `;
+            } catch (error) {
+                alert('Erro ao enviar mensagem: ' + error.message);
+            }
+        }
+    </script>
+</body>
+</html>
+

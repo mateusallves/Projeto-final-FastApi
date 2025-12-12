@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kit Festa - Doce Encanto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="container">
+            <span><i class="fas fa-clock"></i> Segunda a Sexta: 10h às 18h</span>
+            <span><i class="fas fa-phone"></i> (35) 3421-5678 | <i class="fab fa-whatsapp"></i> (35) 99876-5432</span>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container header-content">
+            <a href="../index.html" class="logo">Doce <span>Encanto</span></a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="../index.html">INÍCIO</a>
+                <a href="doceria.html">DOCERIA</a>
+                <a href="kit-festa.html" class="active">KIT FESTA</a>
+                <a href="sobre.html">SOBRE</a>
+                <a href="contato.html">CONTATO</a>
+            </nav>
+            <div class="header-actions">
+                <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i></button>
+                <a href="login.html" class="account-btn"><i class="fas fa-user"></i><span>Entrar</span></a>
+                <a href="carrinho.html" class="cart-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header kit-header">
+        <div class="container">
+            <h1><i class="fas fa-gift"></i> Kit Festa</h1>
+            <p>Kits completos para tornar seu evento especial</p>
+            <div class="breadcrumb">
+                <a href="../index.html">Início</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Kit Festa</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- KIT BENEFITS -->
+    <section class="kit-benefits">
+        <div class="container">
+            <div class="benefits-row">
+                <div class="benefit">
+                    <i class="fas fa-box-open"></i>
+                    <h3>Kits Personalizados</h3>
+                    <p>Monte seu kit ideal</p>
+                </div>
+                <div class="benefit">
+                    <i class="fas fa-truck"></i>
+                    <h3>Entrega Programada</h3>
+                    <p>Receba no dia do evento</p>
+                </div>
+                <div class="benefit">
+                    <i class="fas fa-percent"></i>
+                    <h3>Desconto Especial</h3>
+                    <p>Economia em kits completos</p>
+                </div>
+                <div class="benefit">
+                    <i class="fas fa-headset"></i>
+                    <h3>Consultoria</h3>
+                    <p>Ajudamos você a escolher</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KITS GRID -->
+    <section class="kits-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nossos Kits</h2>
+                <p>Escolha o kit perfeito para sua ocasião</p>
+            </div>
+
+            <div class="kits-grid" id="kitsGrid">
+                <!-- Kits loaded dynamically -->
+                <div class="kit-card skeleton"></div>
+                <div class="kit-card skeleton"></div>
+                <div class="kit-card skeleton"></div>
+            </div>
+
+            <div class="no-kits" id="noKits" style="display: none;">
+                <i class="fas fa-gift"></i>
+                <h3>Nenhum kit disponível no momento</h3>
+                <p>Entre em contato para kits personalizados</p>
+                <a href="contato.html" class="btn-secondary">Falar Conosco</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- EVENTS SECTION -->
+    <section class="events-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Eventos Especiais</h2>
+                <p>Kits temáticos para datas comemorativas</p>
+            </div>
+
+            <div class="events-grid" id="eventsGrid">
+                <!-- Events loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="kit-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Kit Personalizado?</h2>
+                <p>Não encontrou o que procurava? Criamos kits sob medida para sua festa!</p>
+                <a href="contato.html" class="btn-cta">
+                    <i class="fab fa-whatsapp"></i> Fazer Orçamento
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <h3 class="logo">Doce <span>Encanto</span></h3>
+                    <p>Doces artesanais feitos com amor.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="doceria.html">Doceria</a></li>
+                        <li><a href="kit-festa.html">Kit Festa</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i><span>(35) 3421-5678</span></li>
+                        <li><i class="fab fa-whatsapp"></i><span>(35) 99876-5432</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Delicious Doceria</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5535998765432" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadKits();
+            await loadEvents();
+        });
+
+        async function loadKits() {
+            const grid = document.getElementById('kitsGrid');
+            const noKits = document.getElementById('noKits');
+
+            try {
+                const kits = await API.Kits.listar();
+                
+                if (kits.length === 0) {
+                    grid.style.display = 'none';
+                    noKits.style.display = 'flex';
+                    return;
+                }
+
+                grid.innerHTML = kits.map(kit => `
+                    <div class="kit-card">
+                        <div class="kit-badge">${kit.itens?.length || 0} itens</div>
+                        <div class="kit-image">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <div class="kit-content">
+                            <h3>${kit.nome}</h3>
+                            <p>${kit.descricao || 'Kit especial para sua festa'}</p>
+                            <div class="kit-items">
+                                ${kit.itens ? kit.itens.slice(0, 3).map(item => 
+                                    `<span><i class="fas fa-check"></i> ${item}</span>`
+                                ).join('') : ''}
+                            </div>
+                            <div class="kit-footer">
+                                <p class="kit-price">R$ ${kit.preco?.toFixed(2).replace('.', ',') || '--'}</p>
+                                <button class="btn-add-kit" onclick='addKitToCart(${JSON.stringify(kit).replace(/'/g, "\\'")})'>
+                                    <i class="fas fa-cart-plus"></i> Adicionar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+            } catch (error) {
+                console.error('Erro ao carregar kits:', error);
+                grid.innerHTML = '<p class="error">Erro ao carregar kits</p>';
+            }
+        }
+
+        async function loadEvents() {
+            const grid = document.getElementById('eventsGrid');
+
+            try {
+                const events = await API.Eventos.listar();
+                
+                if (events.length === 0) {
+                    grid.innerHTML = '<p>Nenhum evento especial no momento</p>';
+                    return;
+                }
+
+                const icons = ['fa-heart', 'fa-birthday-cake', 'fa-snowflake', 'fa-gift', 'fa-star'];
+
+                grid.innerHTML = events.map((evt, i) => `
+                    <div class="event-card">
+                        <div class="event-icon">
+                            <i class="fas ${icons[i % icons.length]}"></i>
+                        </div>
+                        <h3>${evt.nome}</h3>
+                        <p>${evt.descricao || ''}</p>
+                        <span class="event-date">${formatDate(evt.data)}</span>
+                    </div>
+                `).join('');
+
+            } catch (error) {
+                console.error('Erro ao carregar eventos:', error);
+            }
+        }
+
+        function formatDate(dateStr) {
+            if (!dateStr) return '';
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long' });
+        }
+
+        function addKitToCart(kit) {
+            Cart.addItem({
+                id: kit.id,
+                name: kit.nome,
+                price: kit.preco,
+                type: 'kit'
+            });
+            alert(`${kit.nome} adicionado ao carrinho!`);
+        }
+    </script>
+</body>
+</html>
+

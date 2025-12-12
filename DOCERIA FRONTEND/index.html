@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doce Encanto - Doces Artesanais</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="container">
+            <span><i class="fas fa-clock"></i> Segunda a Sexta: 10h às 18h</span>
+            <span><i class="fas fa-phone"></i> (35) 3421-5678 | <i class="fab fa-whatsapp"></i> (35) 99876-5432</span>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                Doce <span>Encanto</span>
+            </a>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="active">INÍCIO</a>
+                <a href="pages/doceria.html">DOCERIA</a>
+                <a href="pages/kit-festa.html">KIT FESTA</a>
+                <a href="pages/sobre.html">SOBRE</a>
+                <a href="pages/contato.html">CONTATO</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="search-btn" id="searchBtn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <a href="pages/login.html" class="account-btn">
+                    <i class="fas fa-user"></i>
+                    <span>Entrar</span>
+                </a>
+                <a href="pages/carrinho.html" class="cart-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Search Overlay -->
+        <div class="search-overlay" id="searchOverlay">
+            <div class="search-container">
+                <input type="text" placeholder="O que você procura?" id="searchInput">
+                <button class="search-close" id="searchClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SLIDER -->
+    <section class="hero-slider">
+        <div class="slides-container" id="slidesContainer">
+            <div class="slide active" style="background: linear-gradient(135deg, #e78b9a 0%, #d66f82 100%);">
+                <div class="slide-content">
+                    <span class="slide-tag">Novidade</span>
+                    <h1>Coffee Delivery</h1>
+                    <p>O melhor café da manhã direto na sua empresa ou evento</p>
+                    <a href="pages/doceria.html" class="btn-primary">Saiba Mais</a>
+                </div>
+                <div class="slide-image">
+                    <i class="fas fa-mug-hot"></i>
+                </div>
+            </div>
+            <div class="slide" style="background: linear-gradient(135deg, #7c1b2e 0%, #a02942 100%);">
+                <div class="slide-content">
+                    <span class="slide-tag">Especial</span>
+                    <h1>Doceria Artesanal</h1>
+                    <p>Brigadeiros, bolos e doces feitos com amor e ingredientes selecionados</p>
+                    <a href="pages/doceria.html" class="btn-primary">Ver Cardápio</a>
+                </div>
+                <div class="slide-image">
+                    <i class="fas fa-birthday-cake"></i>
+                </div>
+            </div>
+            <div class="slide" style="background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);">
+                <div class="slide-content">
+                    <span class="slide-tag">Festas</span>
+                    <h1>Kit Festa Completo</h1>
+                    <p>Tudo que você precisa para sua celebração especial</p>
+                    <a href="pages/kit-festa.html" class="btn-primary">Monte seu Kit</a>
+                </div>
+                <div class="slide-image">
+                    <i class="fas fa-gift"></i>
+                </div>
+            </div>
+            <div class="slide" style="background: linear-gradient(135deg, #e17055 0%, #d63031 100%);">
+                <div class="slide-content">
+                    <span class="slide-tag">Corporativo</span>
+                    <h1>Finger Foods</h1>
+                    <p>Salgadinhos e petiscos para eventos corporativos</p>
+                    <a href="pages/doceria.html" class="btn-primary">Ver Opções</a>
+                </div>
+                <div class="slide-image">
+                    <i class="fas fa-utensils"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="slider-controls">
+            <button class="slider-btn prev" id="prevSlide">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="slider-dots" id="sliderDots"></div>
+            <button class="slider-btn next" id="nextSlide">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- BENEFITS BAR -->
+    <section class="benefits">
+        <div class="container">
+            <div class="benefit-item">
+                <i class="fas fa-calendar-check"></i>
+                <div class="benefit-text">
+                    <strong>Agende seu pedido</strong>
+                    <span>Escolha a melhor data</span>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <i class="fas fa-truck"></i>
+                <div class="benefit-text">
+                    <strong>Entrega em SP</strong>
+                    <span>Motoristas próprios</span>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <i class="fas fa-percent"></i>
+                <div class="benefit-text">
+                    <strong>10% OFF</strong>
+                    <span>No primeiro pedido</span>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <i class="fas fa-clock"></i>
+                <div class="benefit-text">
+                    <strong>Entrega em 48h</strong>
+                    <span>Pedidos até 12h</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORIES SECTION -->
+    <section class="categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Compre por Categoria</h2>
+                <p>Escolha entre nossas deliciosas opções</p>
+            </div>
+
+            <div class="categories-grid" id="categoriesGrid">
+                <!-- Categories will be loaded dynamically -->
+                <div class="category-card skeleton"></div>
+                <div class="category-card skeleton"></div>
+                <div class="category-card skeleton"></div>
+                <div class="category-card skeleton"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED PRODUCTS -->
+    <section class="featured-products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Produtos em Destaque</h2>
+                <p>Os mais pedidos pelos nossos clientes</p>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be loaded dynamically -->
+                <div class="product-card skeleton"></div>
+                <div class="product-card skeleton"></div>
+                <div class="product-card skeleton"></div>
+                <div class="product-card skeleton"></div>
+            </div>
+
+            <div class="view-all">
+                <a href="pages/doceria.html" class="btn-secondary">Ver Todos os Produtos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Faça sua Encomenda</h2>
+                <p>Personalizamos seu pedido para qualquer ocasião especial</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/5535998765432" target="_blank" class="btn-primary">
+                        <i class="fab fa-whatsapp"></i> Falar no WhatsApp
+                    </a>
+                    <a href="pages/doceria.html" class="btn-outline">Ver Cardápio</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT PREVIEW -->
+    <section class="about-preview">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-store"></i>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <span class="section-tag">Sobre Nós</span>
+                    <h2>Tradição e Sabor desde 2010</h2>
+                    <p>A Doce Encanto nasceu da paixão por criar doces que encantam. 
+                    Cada receita é preparada com ingredientes selecionados e muito carinho, 
+                    trazendo sabores que marcam momentos especiais.</p>
+                    <ul class="about-features">
+                        <li><i class="fas fa-check"></i> Ingredientes premium</li>
+                        <li><i class="fas fa-check"></i> Receitas artesanais</li>
+                        <li><i class="fas fa-check"></i> Entrega cuidadosa</li>
+                        <li><i class="fas fa-check"></i> Atendimento personalizado</li>
+                    </ul>
+                    <a href="pages/sobre.html" class="btn-secondary">Conheça Nossa História</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>O que nossos clientes dizem</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Os brigadeiros são simplesmente perfeitos! Sempre faço encomendas para festas da família."</p>
+                    <div class="testimonial-author">
+                        <strong>Maria Silva</strong>
+                        <span>Cliente desde 2018</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"O kit festa para o aniversário do meu filho ficou incrível. Todos elogiaram!"</p>
+                    <div class="testimonial-author">
+                        <strong>João Santos</strong>
+                        <span>Cliente desde 2020</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Coffee delivery para nossa empresa toda semana. Qualidade impecável sempre!"</p>
+                    <div class="testimonial-author">
+                        <strong>Ana Paula</strong>
+                        <span>Empresa parceira</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTAGRAM FEED -->
+    <section class="instagram-section">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fab fa-instagram"></i> Siga-nos no Instagram</h2>
+                <a href="https://instagram.com/doceencanto" target="_blank" class="instagram-handle">@doceencanto</a>
+            </div>
+            <div class="instagram-grid">
+                <div class="instagram-item"><i class="fas fa-birthday-cake"></i></div>
+                <div class="instagram-item"><i class="fas fa-cookie"></i></div>
+                <div class="instagram-item"><i class="fas fa-ice-cream"></i></div>
+                <div class="instagram-item"><i class="fas fa-candy-cane"></i></div>
+                <div class="instagram-item"><i class="fas fa-cake-candles"></i></div>
+                <div class="instagram-item"><i class="fas fa-mug-hot"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <h3 class="logo">Doce <span>Encanto</span></h3>
+                    <p>Doces artesanais feitos com amor e ingredientes selecionados para tornar seus momentos ainda mais especiais.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="pages/doceria.html">Doceria</a></li>
+                        <li><a href="pages/kit-festa.html">Kit Festa</a></li>
+                        <li><a href="pages/sobre.html">Sobre Nós</a></li>
+                        <li><a href="pages/contato.html">Contato</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i><span>(35) 3421-5678</span></li>
+                        <li><i class="fab fa-whatsapp"></i><span>(35) 99876-5432</span></li>
+                        <li><i class="fas fa-envelope"></i><span>contato@doceencanto.com.br</span></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Localização</h4>
+                    <address>
+                        <i class="fas fa-map-marker-alt"></i>
+                        Rua Verbo Divino, 1083<br>
+                        Chácara Santo Antônio<br>
+                        São Paulo - SP
+                    </address>
+                    <p class="hours"><i class="fas fa-clock"></i> Seg a Sex: 10h às 18h</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Delicious Doceria - Todos os direitos reservados</p>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-pix"></i>
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP FLOAT BUTTON -->
+    <a href="https://wa.me/5535998765432" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- BACK TO TOP -->
+    <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="js/api.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
+

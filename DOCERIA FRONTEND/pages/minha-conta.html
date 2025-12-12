@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Conta - Doce Encanto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="container">
+            <span><i class="fas fa-clock"></i> Segunda a Sexta: 10h às 18h</span>
+            <span><i class="fas fa-phone"></i> (35) 3421-5678 | <i class="fab fa-whatsapp"></i> (35) 99876-5432</span>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container header-content">
+            <a href="../index.html" class="logo">Doce <span>Encanto</span></a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="../index.html">INÍCIO</a>
+                <a href="doceria.html">DOCERIA</a>
+                <a href="kit-festa.html">KIT FESTA</a>
+                <a href="sobre.html">SOBRE</a>
+                <a href="contato.html">CONTATO</a>
+            </nav>
+            <div class="header-actions">
+                <a href="minha-conta.html" class="account-btn account-btn--logged">
+                    <i class="fas fa-user-check"></i>
+                    <span id="userName">Minha Conta</span>
+                </a>
+                <a href="carrinho.html" class="cart-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-user-circle"></i> Minha Conta</h1>
+            <div class="breadcrumb">
+                <a href="../index.html">Início</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Minha Conta</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACCOUNT SECTION -->
+    <section class="account-section">
+        <div class="container">
+            <div class="account-layout">
+                <!-- SIDEBAR MENU -->
+                <aside class="account-sidebar">
+                    <div class="account-profile-card">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3 id="profileName">Carregando...</h3>
+                        <p id="profileEmail">carregando@email.com</p>
+                    </div>
+
+                    <nav class="account-menu">
+                        <a href="minha-conta.html" class="menu-item active" data-page="dashboard">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                        <a href="meus-pedidos.html" class="menu-item" data-page="pedidos">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span>Meus Pedidos</span>
+                            <span class="badge" id="ordersBadge">0</span>
+                        </a>
+                        <a href="checkout.html" class="menu-item" data-page="checkout">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Finalizar Pedido</span>
+                        </a>
+                        <a href="historico-pagamentos.html" class="menu-item" data-page="pagamentos">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>Histórico de Pagamentos</span>
+                        </a>
+                        <a href="configuracoes.html" class="menu-item" data-page="configuracoes">
+                            <i class="fas fa-cog"></i>
+                            <span>Configurações</span>
+                        </a>
+                        <a href="#" class="menu-item" onclick="handleLogout(event)">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Sair</span>
+                        </a>
+                    </nav>
+                </aside>
+
+                <!-- MAIN CONTENT -->
+                <main class="account-content">
+                    <!-- Dashboard -->
+                    <div class="account-page active" id="dashboardPage">
+                        <div class="page-title">
+                            <h2>Dashboard</h2>
+                            <p>Bem-vindo de volta! Aqui está um resumo da sua conta.</p>
+                        </div>
+
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon" style="background: linear-gradient(135deg, #c9697a, #a84d5d);">
+                                    <i class="fas fa-shopping-bag"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3 id="totalPedidos">0</h3>
+                                    <p>Pedidos Realizados</p>
+                                </div>
+                            </div>
+
+                            <div class="stat-card">
+                                <div class="stat-icon" style="background: linear-gradient(135deg, #4caf50, #45a049);">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3 id="pedidosEntregues">0</h3>
+                                    <p>Pedidos Entregues</p>
+                                </div>
+                            </div>
+
+                            <div class="stat-card">
+                                <div class="stat-icon" style="background: linear-gradient(135deg, #ff9800, #f57c00);">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3 id="pedidosPendentes">0</h3>
+                                    <p>Pedidos Pendentes</p>
+                                </div>
+                            </div>
+
+                            <div class="stat-card">
+                                <div class="stat-icon" style="background: linear-gradient(135deg, #2196f3, #1976d2);">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3 id="totalGasto">R$ 0,00</h3>
+                                    <p>Total Gasto</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Orders -->
+                        <div class="recent-orders">
+                            <div class="section-header">
+                                <h3>Pedidos Recentes</h3>
+                                <a href="meus-pedidos.html" class="btn-link">Ver Todos</a>
+                            </div>
+                            <div id="recentOrdersList" class="orders-list">
+                                <div class="loading-state">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                    <p>Carregando pedidos...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Actions -->
+                        <div class="quick-actions">
+                            <h3>Ações Rápidas</h3>
+                            <div class="actions-grid">
+                                <a href="carrinho.html" class="action-card">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    <span>Ver Carrinho</span>
+                                </a>
+                                <a href="doceria.html" class="action-card">
+                                    <i class="fas fa-store"></i>
+                                    <span>Fazer Pedido</span>
+                                </a>
+                                <a href="configuracoes.html" class="action-card">
+                                    <i class="fas fa-user-edit"></i>
+                                    <span>Editar Perfil</span>
+                                </a>
+                                <a href="contato.html" class="action-card">
+                                    <i class="fas fa-headset"></i>
+                                    <span>Suporte</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <h3 class="logo">Doce <span>Encanto</span></h3>
+                    <p>Doces artesanais feitos com amor.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i><span>(35) 3421-5678</span></li>
+                        <li><i class="fab fa-whatsapp"></i><span>(35) 99876-5432</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Delicious Doceria</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/account.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Verificar autenticação
+            if (!API.Auth.isAuthenticated()) {
+                window.location.href = 'login.html?next=' + encodeURIComponent(window.location.pathname);
+                return;
+            }
+
+            // Carregar dados do usuário
+            Account.loadDashboard();
+        });
+
+        function handleLogout(event) {
+            event.preventDefault();
+            if (confirm('Deseja sair da sua conta?')) {
+                API.Auth.logout();
+                window.location.href = '../index.html';
+            }
+        }
+    </script>
+</body>
+</html>
+

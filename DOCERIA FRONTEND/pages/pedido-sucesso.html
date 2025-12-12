@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido Confirmado - Doce Encanto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="container">
+            <span><i class="fas fa-clock"></i> Segunda a Sexta: 10h às 18h</span>
+            <span><i class="fas fa-phone"></i> (35) 3421-5678 | <i class="fab fa-whatsapp"></i> (35) 99876-5432</span>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container header-content">
+            <a href="../index.html" class="logo">Doce <span>Encanto</span></a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="../index.html">INÍCIO</a>
+                <a href="doceria.html">DOCERIA</a>
+                <a href="kit-festa.html">KIT FESTA</a>
+                <a href="sobre.html">SOBRE</a>
+                <a href="contato.html">CONTATO</a>
+            </nav>
+            <div class="header-actions">
+                <a href="minha-conta.html" class="account-btn account-btn--logged">
+                    <i class="fas fa-user-check"></i>
+                    <span id="userName">Minha Conta</span>
+                </a>
+                <a href="carrinho.html" class="cart-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- SUCCESS SECTION -->
+    <section class="success-section">
+        <div class="container">
+            <div class="success-content">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h1>Pedido Confirmado!</h1>
+                <p class="success-message">Seu pedido foi recebido com sucesso e está sendo processado.</p>
+                
+                <div class="order-info-card">
+                    <h2>Número do Pedido</h2>
+                    <p class="order-number" id="orderNumber">PED-2024-0001</p>
+                    <p class="order-info">Você receberá um e-mail de confirmação em breve.</p>
+                </div>
+
+                <div class="success-actions">
+                    <a href="meus-pedidos.html" class="btn-primary">
+                        <i class="fas fa-shopping-bag"></i> Ver Meus Pedidos
+                    </a>
+                    <a href="doceria.html" class="btn-outline">
+                        <i class="fas fa-store"></i> Continuar Comprando
+                    </a>
+                </div>
+
+                <div class="next-steps">
+                    <h3>Próximos Passos</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Aguarde a confirmação do pedido</li>
+                        <li><i class="fas fa-check"></i> Acompanhe o status em "Meus Pedidos"</li>
+                        <li><i class="fas fa-check"></i> Você receberá notificações sobre o andamento</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <h3 class="logo">Doce <span>Encanto</span></h3>
+                    <p>Doces artesanais feitos com amor.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Delicious Doceria</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Obter número do pedido da URL
+            const params = new URLSearchParams(window.location.search);
+            const pedidoNumero = params.get('pedido');
+            
+            if (pedidoNumero) {
+                document.getElementById('orderNumber').textContent = pedidoNumero;
+            }
+        });
+    </script>
+</body>
+</html>
+

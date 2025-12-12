@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Pedido - Doce Encanto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="container">
+            <span><i class="fas fa-clock"></i> Segunda a Sexta: 10h às 18h</span>
+            <span><i class="fas fa-phone"></i> (35) 3421-5678 | <i class="fab fa-whatsapp"></i> (35) 99876-5432</span>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container header-content">
+            <a href="../index.html" class="logo">Doce <span>Encanto</span></a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="../index.html">INÍCIO</a>
+                <a href="doceria.html">DOCERIA</a>
+                <a href="kit-festa.html">KIT FESTA</a>
+                <a href="sobre.html">SOBRE</a>
+                <a href="contato.html">CONTATO</a>
+            </nav>
+            <div class="header-actions">
+                <a href="minha-conta.html" class="account-btn account-btn--logged">
+                    <i class="fas fa-user-check"></i>
+                    <span id="userName">Minha Conta</span>
+                </a>
+                <a href="carrinho.html" class="cart-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-credit-card"></i> Finalizar Pedido</h1>
+            <div class="breadcrumb">
+                <a href="../index.html">Início</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="carrinho.html">Carrinho</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Checkout</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHECKOUT SECTION -->
+    <section class="checkout-section">
+        <div class="container">
+            <div id="emptyCartMessage" class="empty-cart" style="display: none;">
+                <i class="fas fa-shopping-bag"></i>
+                <h2>Seu carrinho está vazio</h2>
+                <p>Adicione produtos ao carrinho antes de finalizar o pedido</p>
+                <a href="doceria.html" class="btn-secondary">Ver Produtos</a>
+            </div>
+
+            <div id="checkoutContent" class="checkout-layout">
+                <div class="checkout-main">
+                    <!-- Delivery Info -->
+                    <div class="checkout-block">
+                        <h2><i class="fas fa-truck"></i> Informações de Entrega</h2>
+                        
+                        <div class="form-group">
+                            <label>
+                                <input type="radio" name="tipoEntrega" value="entrega" checked>
+                                <span>Entrega</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="tipoEntrega" value="retirada">
+                                <span>Retirada no Local</span>
+                            </label>
+                        </div>
+
+                        <div id="deliveryAddressForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>CEP</label>
+                                    <input type="text" id="cep" placeholder="00000-000" maxlength="9">
+                                </div>
+                                <div class="form-group">
+                                    <label>Data de Entrega</label>
+                                    <input type="date" id="dataEntrega" min="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Horário</label>
+                                    <input type="time" id="horaEntrega">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group" style="flex: 2;">
+                                    <label>Endereço</label>
+                                    <input type="text" id="endereco" placeholder="Rua, Avenida...">
+                                </div>
+                                <div class="form-group">
+                                    <label>Número</label>
+                                    <input type="text" id="numero" placeholder="123">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Complemento</label>
+                                    <input type="text" id="complemento" placeholder="Apto, Bloco...">
+                                </div>
+                                <div class="form-group">
+                                    <label>Bairro</label>
+                                    <input type="text" id="bairro" placeholder="Bairro">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Cidade</label>
+                                    <input type="text" id="cidade" placeholder="Cidade">
+                                </div>
+                                <div class="form-group">
+                                    <label>Estado</label>
+                                    <select id="estado">
+                                        <option value="">Selecione</option>
+                                        <option value="SP">São Paulo</option>
+                                        <option value="RJ">Rio de Janeiro</option>
+                                        <option value="MG">Minas Gerais</option>
+                                        <option value="ES">Espírito Santo</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Info -->
+                    <div class="checkout-block">
+                        <h2><i class="fas fa-money-bill-wave"></i> Forma de Pagamento</h2>
+                        
+                        <div class="payment-methods">
+                            <label class="payment-option">
+                                <input type="radio" name="pagamento" value="pix" checked>
+                                <div class="payment-card">
+                                    <i class="fab fa-pix"></i>
+                                    <span>PIX</span>
+                                </div>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="pagamento" value="dinheiro">
+                                <div class="payment-card">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                    <span>Dinheiro</span>
+                                </div>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="pagamento" value="cartao_credito">
+                                <div class="payment-card">
+                                    <i class="fas fa-credit-card"></i>
+                                    <span>Cartão de Crédito</span>
+                                </div>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="pagamento" value="cartao_debito">
+                                <div class="payment-card">
+                                    <i class="fas fa-credit-card"></i>
+                                    <span>Cartão de Débito</span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div id="trocoSection" style="display: none;">
+                            <div class="form-group">
+                                <label>Troco para quanto?</label>
+                                <input type="number" id="trocoPara" step="0.01" min="0" placeholder="0.00">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Observations -->
+                    <div class="checkout-block">
+                        <h2><i class="fas fa-sticky-note"></i> Observações</h2>
+                        <textarea id="observacoes" rows="4" placeholder="Alguma observação especial sobre o pedido?"></textarea>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <aside class="checkout-sidebar">
+                    <div class="order-summary">
+                        <h3>Resumo do Pedido</h3>
+                        
+                        <div id="orderItems" class="order-items">
+                            <!-- Items loaded dynamically -->
+                        </div>
+
+                        <div class="summary-totals">
+                            <div class="summary-row">
+                                <span>Subtotal</span>
+                                <span id="summarySubtotal">R$ 0,00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Taxa de Entrega</span>
+                                <span id="summaryDelivery">R$ 0,00</span>
+                            </div>
+                            <div class="summary-row discount" id="summaryDiscountRow" style="display: none;">
+                                <span>Desconto</span>
+                                <span id="summaryDiscount">- R$ 0,00</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Total</span>
+                                <span id="summaryTotal">R$ 0,00</span>
+                            </div>
+                        </div>
+
+                        <button class="btn-checkout" id="finalizeOrderBtn" onclick="finalizeOrder()">
+                            <i class="fas fa-lock"></i> Finalizar Pedido
+                        </button>
+
+                        <div class="security-info">
+                            <p><i class="fas fa-shield-alt"></i> Seus dados estão seguros</p>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <h3 class="logo">Doce <span>Encanto</span></h3>
+                    <p>Doces artesanais feitos com amor.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Delicious Doceria</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/account.js"></script>
+    <script>
+        const DELIVERY_FEE = 15.00;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Verificar autenticação
+            if (!API.Auth.isAuthenticated()) {
+                window.location.href = 'login.html?next=' + encodeURIComponent(window.location.pathname);
+                return;
+            }
+
+            // Verificar se há itens no carrinho
+            const items = Cart.getItems();
+            if (items.length === 0) {
+                document.getElementById('emptyCartMessage').style.display = 'flex';
+                document.getElementById('checkoutContent').style.display = 'none';
+                return;
+            }
+
+            // Configurar data mínima (hoje)
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('dataEntrega').min = today;
+
+            // Carregar resumo do pedido
+            loadOrderSummary();
+
+            // Event listeners
+            document.querySelectorAll('input[name="tipoEntrega"]').forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    const deliveryForm = document.getElementById('deliveryAddressForm');
+                    if (e.target.value === 'retirada') {
+                        deliveryForm.style.display = 'none';
+                        document.getElementById('summaryDelivery').textContent = 'R$ 0,00';
+                    } else {
+                        deliveryForm.style.display = 'block';
+                        document.getElementById('summaryDelivery').textContent = `R$ ${DELIVERY_FEE.toFixed(2).replace('.', ',')}`;
+                    }
+                    updateTotal();
+                });
+            });
+
+            document.querySelectorAll('input[name="pagamento"]').forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    const trocoSection = document.getElementById('trocoSection');
+                    trocoSection.style.display = e.target.value === 'dinheiro' ? 'block' : 'none';
+                });
+            });
+        });
+
+        function loadOrderSummary() {
+            const items = Cart.getItems();
+            const itemsHtml = items.map(item => `
+                <div class="order-item">
+                    <span>${item.name} x${item.quantity}</span>
+                    <span>R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}</span>
+                </div>
+            `).join('');
+
+            document.getElementById('orderItems').innerHTML = itemsHtml;
+            updateTotal();
+        }
+
+        function updateTotal() {
+            const subtotal = Cart.getTotal();
+            const tipoEntrega = document.querySelector('input[name="tipoEntrega"]:checked').value;
+            const delivery = tipoEntrega === 'entrega' ? DELIVERY_FEE : 0;
+            const total = subtotal + delivery;
+
+            document.getElementById('summarySubtotal').textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+            document.getElementById('summaryDelivery').textContent = `R$ ${delivery.toFixed(2).replace('.', ',')}`;
+            document.getElementById('summaryTotal').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+        }
+
+        async function finalizeOrder() {
+            const items = Cart.getItems();
+            if (items.length === 0) {
+                alert('Seu carrinho está vazio!');
+                return;
+            }
+
+            const btn = document.getElementById('finalizeOrderBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processando...';
+
+            try {
+                // Buscar ou criar cliente
+                const user = API.Auth.getUser();
+                let cliente = await Account.getOrCreateCliente(user);
+
+                // Preparar dados do pedido
+                const tipoEntrega = document.querySelector('input[name="tipoEntrega"]:checked').value;
+                const formaPagamento = document.querySelector('input[name="pagamento"]:checked').value;
+                
+                // Validações
+                if (tipoEntrega === 'entrega') {
+                    const endereco = document.getElementById('endereco').value.trim();
+                    const numero = document.getElementById('numero').value.trim();
+                    const cidade = document.getElementById('cidade').value.trim();
+                    const estado = document.getElementById('estado').value.trim();
+                    
+                    if (!endereco || !numero || !cidade || !estado) {
+                        alert('Por favor, preencha todos os campos obrigatórios do endereço de entrega.');
+                        btn.disabled = false;
+                        btn.innerHTML = '<i class="fas fa-lock"></i> Finalizar Pedido';
+                        return;
+                    }
+                }
+
+                if (!formaPagamento) {
+                    alert('Por favor, selecione uma forma de pagamento.');
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-lock"></i> Finalizar Pedido';
+                    return;
+                }
+                
+                const pedidoData = {
+                    cliente_id: cliente.id,
+                    tipo_entrega: tipoEntrega,
+                    forma_pagamento: formaPagamento,
+                    itens: items.map(item => ({
+                        produto_id: item.type === 'produto' ? item.id : null,
+                        kit_id: item.type === 'kit' ? item.id : null,
+                        quantidade: item.quantity,
+                        observacoes: null
+                    })),
+                    desconto: 0,
+                    taxa_entrega: tipoEntrega === 'entrega' ? DELIVERY_FEE : 0,
+                    observacoes: document.getElementById('observacoes').value.trim() || null
+                };
+
+                if (tipoEntrega === 'entrega') {
+                    pedidoData.data_entrega = document.getElementById('dataEntrega').value || null;
+                    pedidoData.hora_entrega = document.getElementById('horaEntrega').value || null;
+                    pedidoData.endereco_entrega = document.getElementById('endereco').value.trim();
+                    pedidoData.numero_entrega = document.getElementById('numero').value.trim();
+                    pedidoData.complemento_entrega = document.getElementById('complemento').value.trim() || null;
+                    pedidoData.bairro_entrega = document.getElementById('bairro').value.trim() || null;
+                    pedidoData.cidade_entrega = document.getElementById('cidade').value.trim();
+                    pedidoData.estado_entrega = document.getElementById('estado').value.trim();
+                    const cep = document.getElementById('cep').value.replace(/\D/g, '');
+                    pedidoData.cep_entrega = cep || null;
+                }
+
+                if (formaPagamento === 'dinheiro') {
+                    const trocoPara = parseFloat(document.getElementById('trocoPara').value);
+                    if (trocoPara && trocoPara > 0) {
+                        pedidoData.troco_para = trocoPara;
+                    }
+                }
+
+                // Criar pedido
+                const pedido = await API.Pedidos.criar(pedidoData);
+
+                // Limpar carrinho
+                Cart.clear();
+
+                // Redirecionar para página de sucesso
+                window.location.href = `pedido-sucesso.html?pedido=${pedido.numero_pedido}`;
+            } catch (error) {
+                console.error('Erro ao finalizar pedido:', error);
+                alert('Erro ao finalizar pedido: ' + (error.message || 'Erro desconhecido. Tente novamente.'));
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-lock"></i> Finalizar Pedido';
+            }
+        }
+    </script>
+</body>
+</html>
+

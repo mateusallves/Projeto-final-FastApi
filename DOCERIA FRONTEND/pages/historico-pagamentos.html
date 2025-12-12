@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de Pagamentos - Doce Encanto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="container">
+            <span><i class="fas fa-clock"></i> Segunda a Sexta: 10h às 18h</span>
+            <span><i class="fas fa-phone"></i> (35) 3421-5678 | <i class="fab fa-whatsapp"></i> (35) 99876-5432</span>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container header-content">
+            <a href="../index.html" class="logo">Doce <span>Encanto</span></a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="../index.html">INÍCIO</a>
+                <a href="doceria.html">DOCERIA</a>
+                <a href="kit-festa.html">KIT FESTA</a>
+                <a href="sobre.html">SOBRE</a>
+                <a href="contato.html">CONTATO</a>
+            </nav>
+            <div class="header-actions">
+                <a href="minha-conta.html" class="account-btn account-btn--logged">
+                    <i class="fas fa-user-check"></i>
+                    <span id="userName">Minha Conta</span>
+                </a>
+                <a href="carrinho.html" class="cart-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-money-bill-wave"></i> Histórico de Pagamentos</h1>
+            <div class="breadcrumb">
+                <a href="../index.html">Início</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="minha-conta.html">Minha Conta</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Histórico de Pagamentos</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAYMENTS HISTORY SECTION -->
+    <section class="payments-section">
+        <div class="container">
+            <!-- Filters -->
+            <div class="payments-filters">
+                <button class="filter-btn active" data-status="">Todos</button>
+                <button class="filter-btn" data-status="pendente">Pendentes</button>
+                <button class="filter-btn" data-status="aprovado">Aprovados</button>
+                <button class="filter-btn" data-status="recusado">Recusados</button>
+                <button class="filter-btn" data-status="estornado">Estornados</button>
+            </div>
+
+            <!-- Summary Cards -->
+            <div class="payments-summary">
+                <div class="summary-card">
+                    <h3>Total Pago</h3>
+                    <p class="amount" id="totalPago">R$ 0,00</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Pagamentos Aprovados</h3>
+                    <p class="count" id="totalAprovados">0</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Pagamentos Pendentes</h3>
+                    <p class="count" id="totalPendentes">0</p>
+                </div>
+            </div>
+
+            <!-- Payments List -->
+            <div id="paymentsList" class="payments-list">
+                <div class="loading-state">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Carregando pagamentos...</p>
+                </div>
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyPayments" class="empty-state" style="display: none;">
+                <i class="fas fa-money-bill-wave"></i>
+                <h2>Nenhum pagamento encontrado</h2>
+                <p>Você ainda não realizou nenhum pagamento.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Details Modal -->
+    <div id="paymentModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Detalhes do Pagamento</h2>
+                <button class="modal-close" onclick="closePaymentModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="paymentModalBody" class="modal-body">
+                <!-- Payment details loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <h3 class="logo">Doce <span>Encanto</span></h3>
+                    <p>Doces artesanais feitos com amor.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Delicious Doceria</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/account.js"></script>
+    <script>
+        let currentStatusFilter = '';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Verificar autenticação
+            if (!API.Auth.isAuthenticated()) {
+                window.location.href = 'login.html?next=' + encodeURIComponent(window.location.pathname);
+                return;
+            }
+
+            // Carregar pagamentos
+            loadPayments();
+
+            // Event listeners para filtros
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentStatusFilter = btn.dataset.status;
+                    loadPayments();
+                });
+            });
+        });
+
+        async function loadPayments() {
+            try {
+                const user = API.Auth.getUser();
+                const cliente = await Account.getOrCreateCliente(user);
+                
+                let pagamentos = await API.Pagamentos.listarPorCliente(cliente.id);
+                
+                // Filtrar por status se necessário
+                if (currentStatusFilter) {
+                    pagamentos = pagamentos.filter(p => p.status === currentStatusFilter);
+                }
+
+                // Calcular estatísticas
+                calculateStats(pagamentos);
+
+                renderPayments(pagamentos);
+            } catch (error) {
+                console.error('Erro ao carregar pagamentos:', error);
+                document.getElementById('paymentsList').innerHTML = `
+                    <div class="error-state">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <p>Erro ao carregar pagamentos. Tente novamente.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function calculateStats(pagamentos) {
+            const totalPago = pagamentos
+                .filter(p => p.status === 'aprovado')
+                .reduce((sum, p) => sum + (p.valor_pago || p.valor), 0);
+            
+            const totalAprovados = pagamentos.filter(p => p.status === 'aprovado').length;
+            const totalPendentes = pagamentos.filter(p => p.status === 'pendente').length;
+
+            document.getElementById('totalPago').textContent = `R$ ${totalPago.toFixed(2).replace('.', ',')}`;
+            document.getElementById('totalAprovados').textContent = totalAprovados;
+            document.getElementById('totalPendentes').textContent = totalPendentes;
+        }
+
+        function renderPayments(pagamentos) {
+            const paymentsList = document.getElementById('paymentsList');
+            const emptyPayments = document.getElementById('emptyPayments');
+
+            if (pagamentos.length === 0) {
+                paymentsList.style.display = 'none';
+                emptyPayments.style.display = 'block';
+                return;
+            }
+
+            paymentsList.style.display = 'block';
+            emptyPayments.style.display = 'none';
+
+            paymentsList.innerHTML = pagamentos.map(pagamento => {
+                const statusClass = getStatusClass(pagamento.status);
+                const statusLabel = getStatusLabel(pagamento.status);
+                const formaLabel = getFormaPagamentoLabel(pagamento.forma_pagamento);
+                const dataPagamento = new Date(pagamento.data_criacao).toLocaleDateString('pt-BR');
+
+                return `
+                    <div class="payment-card">
+                        <div class="payment-header">
+                            <div>
+                                <h3>Pagamento #${pagamento.id}</h3>
+                                <p class="payment-date">${dataPagamento}</p>
+                                <p class="payment-order">Pedido: ${pagamento.numero_pedido || pagamento.pedido?.numero_pedido || 'N/A'}</p>
+                            </div>
+                            <span class="status-badge ${statusClass}">${statusLabel}</span>
+                        </div>
+                        <div class="payment-body">
+                            <div class="payment-info">
+                                <p><i class="fas fa-dollar-sign"></i> R$ ${pagamento.valor.toFixed(2).replace('.', ',')}</p>
+                                <p><i class="fas fa-credit-card"></i> ${formaLabel}</p>
+                                ${pagamento.data_pagamento ? `<p><i class="fas fa-calendar-check"></i> Pago em: ${new Date(pagamento.data_pagamento).toLocaleDateString('pt-BR')}</p>` : ''}
+                            </div>
+                            <div class="payment-actions">
+                                <button class="btn-outline" onclick="viewPaymentDetails(${pagamento.id})">
+                                    <i class="fas fa-eye"></i> Ver Detalhes
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function getStatusClass(status) {
+            const statusMap = {
+                'pendente': 'status-pending',
+                'processando': 'status-preparing',
+                'aprovado': 'status-delivered',
+                'recusado': 'status-cancelled',
+                'estornado': 'status-cancelled',
+                'cancelado': 'status-cancelled'
+            };
+            return statusMap[status] || 'status-pending';
+        }
+
+        function getStatusLabel(status) {
+            const labelMap = {
+                'pendente': 'Pendente',
+                'processando': 'Processando',
+                'aprovado': 'Aprovado',
+                'recusado': 'Recusado',
+                'estornado': 'Estornado',
+                'cancelado': 'Cancelado'
+            };
+            return labelMap[status] || status;
+        }
+
+        function getFormaPagamentoLabel(forma) {
+            const labelMap = {
+                'dinheiro': 'Dinheiro',
+                'pix': 'PIX',
+                'cartao_credito': 'Cartão de Crédito',
+                'cartao_debito': 'Cartão de Débito',
+                'transferencia': 'Transferência',
+                'boleto': 'Boleto'
+            };
+            return labelMap[forma] || forma;
+        }
+
+        async function viewPaymentDetails(pagamentoId) {
+            try {
+                const pagamento = await API.Pagamentos.buscarPorId(pagamentoId);
+                const historico = await API.Pagamentos.historico(pagamentoId);
+                
+                const modal = document.getElementById('paymentModal');
+                const modalBody = document.getElementById('paymentModalBody');
+
+                modalBody.innerHTML = `
+                    <div class="payment-details">
+                        <div class="detail-section">
+                            <h3>Informações do Pagamento</h3>
+                            <p><strong>ID:</strong> #${pagamento.id}</p>
+                            <p><strong>Pedido:</strong> ${pagamento.numero_pedido || 'N/A'}</p>
+                            <p><strong>Valor:</strong> R$ ${pagamento.valor.toFixed(2).replace('.', ',')}</p>
+                            <p><strong>Valor Pago:</strong> R$ ${(pagamento.valor_pago || pagamento.valor).toFixed(2).replace('.', ',')}</p>
+                            ${pagamento.troco > 0 ? `<p><strong>Troco:</strong> R$ ${pagamento.troco.toFixed(2).replace('.', ',')}</p>` : ''}
+                            <p><strong>Forma:</strong> ${getFormaPagamentoLabel(pagamento.forma_pagamento)}</p>
+                            <p><strong>Status:</strong> <span class="status-badge ${getStatusClass(pagamento.status)}">${getStatusLabel(pagamento.status)}</span></p>
+                        </div>
+
+                        ${pagamento.forma_pagamento === 'pix' && pagamento.codigo_pix ? `
+                        <div class="detail-section">
+                            <h3>Código PIX</h3>
+                            <p class="pix-code">${pagamento.codigo_pix}</p>
+                        </div>
+                        ` : ''}
+
+                        ${pagamento.forma_pagamento.includes('cartao') ? `
+                        <div class="detail-section">
+                            <h3>Dados do Cartão</h3>
+                            ${pagamento.bandeira_cartao ? `<p><strong>Bandeira:</strong> ${pagamento.bandeira_cartao}</p>` : ''}
+                            ${pagamento.ultimos_digitos ? `<p><strong>Últimos dígitos:</strong> ****${pagamento.ultimos_digitos}</p>` : ''}
+                            ${pagamento.parcelas > 1 ? `<p><strong>Parcelas:</strong> ${pagamento.parcelas}x</p>` : ''}
+                        </div>
+                        ` : ''}
+
+                        <div class="detail-section">
+                            <h3>Histórico</h3>
+                            <div class="history-list">
+                                ${historico.map(h => `
+                                    <div class="history-item">
+                                        <div class="history-status">
+                                            ${h.status_anterior ? `<span class="status-badge ${getStatusClass(h.status_anterior)}">${getStatusLabel(h.status_anterior)}</span>` : ''}
+                                            <i class="fas fa-arrow-right"></i>
+                                            <span class="status-badge ${getStatusClass(h.status_novo)}">${getStatusLabel(h.status_novo)}</span>
+                                        </div>
+                                        <p class="history-date">${new Date(h.data_alteracao).toLocaleString('pt-BR')}</p>
+                                        ${h.descricao ? `<p class="history-desc">${h.descricao}</p>` : ''}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        ${pagamento.observacoes ? `
+                        <div class="detail-section">
+                            <h3>Observações</h3>
+                            <p>${pagamento.observacoes}</p>
+                        </div>
+                        ` : ''}
+                    </div>
+                `;
+
+                modal.style.display = 'flex';
+            } catch (error) {
+                alert('Erro ao carregar detalhes do pagamento: ' + error.message);
+            }
+        }
+
+        function closePaymentModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+
+        // Fechar modal ao clicar fora
+        window.onclick = function(event) {
+            const modal = document.getElementById('paymentModal');
+            if (event.target === modal) {
+                closePaymentModal();
+            }
+        }
+    </script>
+</body>
+</html>
+
